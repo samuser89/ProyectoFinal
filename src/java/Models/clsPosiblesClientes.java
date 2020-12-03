@@ -131,12 +131,12 @@ public class clsPosiblesClientes {
         this.obclsCalificacion = obclsCalificacion;
     }
 
-    public boolean isBlNoParticipacionCorreoElectronico() {
-        return blNoParticipacionCorreoElectronico;
+    public char isChNoParticipacionCorreoElectronico() {
+        return chNoParticipacionCorreoElectronico;
     }
 
-    public void setBlNoParticipacionCorreoElectronico(boolean blNoParticipacionCorreoElectronico) {
-        this.blNoParticipacionCorreoElectronico = blNoParticipacionCorreoElectronico;
+    public void setChNoParticipacionCorreoElectronico(char chNoParticipacionCorreoElectronico) {
+        this.chNoParticipacionCorreoElectronico = chNoParticipacionCorreoElectronico;
     }
 
     public String getStIDSkype() {
@@ -162,6 +162,15 @@ public class clsPosiblesClientes {
     public void setStCorreoElectronicoSecundario(String stCorreoElectronicoSecundario) {
         this.stCorreoElectronicoSecundario = stCorreoElectronicoSecundario;
     }
+    public int inCodigo;
+
+    public int getInCodigo() {
+        return inCodigo;
+    }
+
+    public void setInCodigo(int inCodigo) {
+        this.inCodigo = inCodigo;
+    }
     public String stEmpresa;
     public String stNombre;
     public String stApellidos;
@@ -177,7 +186,7 @@ public class clsPosiblesClientes {
     public int inCantidadEmpleados;
     public double dbIngresosAnuales;
     public clsCalificacion obclsCalificacion;
-    public boolean blNoParticipacionCorreoElectronico;
+    public char chNoParticipacionCorreoElectronico;
     public String stIDSkype;
     public String stTwitter;
     public String stCorreoElectronicoSecundario;

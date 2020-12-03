@@ -4,6 +4,9 @@
     Author     : samuel.serna
 --%>
 
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,17 +34,45 @@
         <script src="js/sweetalert.min.js" type="text/javascript"/></script>
     </head>
     <body>
+        
+        <%
+        List<Models.clsPosiblesClientes> lstclsPosiblesClientes = 
+                new   ArrayList<Models.clsPosiblesClientes>();
+        
+            if(session.getAttribute("session_lstclsPosiblesClientes") !=null){
+            lstclsPosiblesClientes = (List<Models.clsPosiblesClientes>)session.getAttribute("session_lstclsPosiblesClientes");
+            }
+            if(request.getAttribute("stMensaje") !=null &&  request.getAttribute("stTipo") !=null){
+        %>
+        
+        <input type="text" hidden="" id="txtMensaje"
+               value="<%= request.getAttribute("stMensaje")%>"/>
+        <input type="text" hidden="" id="txtTipo"
+               value="<%= request.getAttribute("stTipo")%>"/>       
+        
+        <script>
+            var mensaje = document.getElementById("txtMensaje").toString();
+            var tipo = document.getElementById("txtTipo").toString();
+            swal("Mensaje",mensaje,"error");
+            
+        </script>
+        
+        <%
+            }
+        %>
+        
+        
         <div class="container">        
             <div class="card mx-auto mt-5">
                 <div class="card-header">Crear Posible Cliente</div>
                 <div class="card-body">
-                    <form method="post" action="PosiblesClientesController" >
+                    <form method="post" action="PosiblesClientesController">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <input type="submit" class="btn btn-success"  name="btnGuardar" value="Guardar"/>
-                                    <input type="submit" class="btn btn-warning" value="Modificar" name="btnModificar"/>
-                                    <input type="submit" class="btn btn-danger" value="Cancelar" name="btnCancelar"/>
+                                    <input type="submit" class="btn btn-warning" name="btnModificar" value="Modificar"/>
+                                    <input type="submit" class="btn btn-danger" name="btnCancelar" value="Cancelar" />
                                     <a class="btn btn-outline-info" style="float: right;"  href="Index.jsp"> 
                                         <i class="fa fa-angle-double-left"></i> Volver</a>
                                 </div>
@@ -160,9 +191,10 @@
                                         <option value="1" selected="true">None</option>
                                         <option value="2">Adquirido</option>
                                         <option value="3">Activo</option>
-                                        <option value="4">Fallo de mercado</option>
-                                        <option value="5">Proyecto cancelado</option>
-                                        <option value="6">Apagar</option>
+                                        <option value="4">Contactado</option>
+                                        <option value="5">Fallo de mercado</option>
+                                        <option value="6">Proyecto cancelado</option>
+                                        <option value="7">Apagar</option>
                                     </select>                                    
                                 </div>
 
