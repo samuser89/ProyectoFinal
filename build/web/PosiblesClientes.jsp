@@ -45,15 +45,14 @@
             if(request.getAttribute("stMensaje") !=null &&  request.getAttribute("stTipo") !=null){
         %>
         
-        <input type="text" hidden="" id="txtMensaje"
-               value="<%= request.getAttribute("stMensaje")%>"/>
-        <input type="text" hidden="" id="txtTipo"
-               value="<%= request.getAttribute("stTipo")%>"/>       
+        <input type="text" hidden="" id="txtMensaje" value="<%=request.getAttribute("stMensaje")%>"/>
+        <input type="text" hidden="" id="txtTipo" value="<%=request.getAttribute("stTipo")%>"/>       
         
         <script>
-            var mensaje = document.getElementById("txtMensaje").toString();
-            var tipo = document.getElementById("txtTipo").toString();
-            swal("Mensaje",mensaje,"error");
+            var mensaje = document.getElementById("txtMensaje").value;
+            var tipo = document.getElementById("txtTipo").value;
+            
+            swal("Mensaje", mensaje,tipo);
             
         </script>
         

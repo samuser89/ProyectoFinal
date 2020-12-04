@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.security.auth.message.callback.PrivateKeyCallback;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+@WebServlet(name = "PosiblesClientesController", urlPatterns = {"/PosiblesClientesController"})
 public class PosiblesClientesController extends HttpServlet {
 
 
@@ -19,7 +20,7 @@ public class PosiblesClientesController extends HttpServlet {
             throws ServletException, IOException {
 
         if (request.getParameter("btnGuardar") !=null){
-        
+            btnGuardar(request, response);
         }   else if (request.getParameter("btnModificar") !=null){
         
         }   else if (request.getParameter("btnCancelar") !=null){
@@ -32,6 +33,7 @@ public class PosiblesClientesController extends HttpServlet {
             try{
                 
                 Models.clsPosiblesClientes obclsPosiblesClientes = new Models.clsPosiblesClientes();
+                
                 Models.clsFuentePosibleCliente obclsFuentePosibleCliente = new Models.clsFuentePosibleCliente();
                 Models.clsEstadoPosibleCliente obclsEstadoPosibleCliente = new Models.clsEstadoPosibleCliente();
                 Models.clsSector obclsSector = new Models.clsSector();
@@ -65,6 +67,7 @@ public class PosiblesClientesController extends HttpServlet {
                 if(request.getParameter("txtWeb") !=null){
                     obclsPosiblesClientes.setStSitioWeb(request.getParameter("txtWeb"));
                 }
+
 
 
 
@@ -134,6 +137,7 @@ public class PosiblesClientesController extends HttpServlet {
                     obclsSector.setStDescripcion(stDescripcion);
                     obclsPosiblesClientes.setObclsSector(obclsSector);
                 }
+        
                 
                 if(request.getParameter("txtCantidadEmpleados") !=null){
                     obclsPosiblesClientes.setInCantidadEmpleados(Integer.parseInt(request.getParameter("txtCantidadEmpleados")));
@@ -146,19 +150,19 @@ public class PosiblesClientesController extends HttpServlet {
                     obclsCalificacion.setInCodigo(Integer.parseInt(request.getParameter("ddlCalificacion")));
                         
                     String stDescripcion ="";
-                    if(request.getParameter("ddlSector").equals("1")){
+                    if(request.getParameter("ddlCalificacion").equals("1")){
                         stDescripcion="Ninguno";
-                    } else if(request.getParameter("ddlSector").equals("2")){
+                    } else if(request.getParameter("ddlCalificacion").equals("2")){
                         stDescripcion="Adquirido";
-                    } else if(request.getParameter("ddlSector").equals("3")){
+                    } else if(request.getParameter("ddlCalificacion").equals("3")){
                         stDescripcion="Activo";
-                    } else if(request.getParameter("ddlSector").equals("4")){
+                    } else if(request.getParameter("ddlCalificacion").equals("4")){
                         stDescripcion="Contactado";
-                    } else if(request.getParameter("ddlSector").equals("5")){
+                    } else if(request.getParameter("ddlCalificacion").equals("5")){
                         stDescripcion="Fallo de mercado";
-                    } else if(request.getParameter("ddlSector").equals("6")){
+                    } else if(request.getParameter("ddlCalificacion").equals("6")){
                         stDescripcion="Proyecto cancelado";
-                    } else if(request.getParameter("ddlSector").equals("7")){
+                    } else if(request.getParameter("ddlCalificacion").equals("7")){
                         stDescripcion="Apagar";
                     }
                     
