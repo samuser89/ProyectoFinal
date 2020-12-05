@@ -4,7 +4,7 @@
     Author     : samuel.serna
 --%>
 
-
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,6 +32,9 @@
         <!-- Core plugin JavaScript-->
         <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"/></script>
+            <style type="text/css">
+           .dollars:before{ content: '$'; }
+       </style>
     </head>
     <body>
         
@@ -227,13 +230,94 @@
                             
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="form-row">
-                           
+                                <div class="col-12">
+                                    <b class="badge-pill badge-info">
+                                        Registros: <%=lstclsPosiblesClientes.size()%>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                        
+            <%if(session.getAttribute("session_lstclsPosiblesClientes") !=null){%>
+            
+
+            
+            
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <table class="table table-bordered table-responsive">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th>Empresa</th>
+                                            <th>Nombre</th>
+                                            <th>Apellidos</th>
+                                            <th>Titulo</th>
+                                            <th>Correo electrónico</th>
+                                            <th>Teléfono</th>
+                                            <th>Fax</th>
+                                            <th>Movil</th>
+                                            <th>Sitio Web</th>
+                                            <th>Fuente Posibles Clientes</th>
+                                            <th>Estado Posible Cliente</th>
+                                            <th>Sector</th>
+                                            <th>Cantidad Empleados</th>
+                                            <th>Ingreso Anuales</th>
+                                            <th>Calificación</th>
+                                            <th>No participación correo electónico</th>
+                                            <th>ID de Skype</th>
+                                            <th>Twitter</th>
+                                            <th>Correo electrónico secundario</th>
+                                        </tr>
+                                        </thead>
+                                        <%
+            
+                                            DecimalFormat df = new DecimalFormat();
+                                                df.setMaximumFractionDigits(2);
+                                                df.setMinimumFractionDigits(2); 
+            
+                                            for(Models.clsPosiblesClientes item: lstclsPosiblesClientes){
+                                                Models.clsFuentePosibleCliente obclsFuentePosibleCliente=item.getObclsFuentePosibleCliente();
+                                                Models.clsEstadoPosibleCliente obclsEstadoPosibleCliente=item.getObclsEstadoPosibleCliente();
+                                                Models.clsSector obclSector=item.getObclsSector();
+                                                Models.clsCalificacion obclsCalificacion=item.getObclsCalificacion();
+                                                
+                                        %>
+                                        <tbody>
+                                        <tr>
+                                            <td><%= item.getStEmpresa()%></td>
+                                            <td><%= item.getStNombre()%></td>
+                                            <td><%= item.getStApellidos()%></td>
+                                            <td><%= item.getStTitulo()%></td>
+                                            <td><%= item.getStCorreoElectronico()%></td>
+                                            <td><%= item.getStTelefono()%></td>
+                                            <td><%= item.getStFax()%></td>
+                                            <td><%= item.getStMovil()%></td>
+                                            <td><%= item.getStSitioWeb()%></td>
+                                            <td><%= obclsFuentePosibleCliente.getStDescripcion()%></td>
+                                            <td><%= obclsEstadoPosibleCliente.getStDescripcion()%></td>
+                                            <td><%= obclSector.getStDescripcion()%></td>
+                                            <td><%= item.getInCantidadEmpleados()%></td>
+                                            <td class="dollars"><%= df.format(item.getDbIngresosAnuales())%></td>
+                                            <td><%= obclsCalificacion.getStDescripcion()%></td>
+                                            <td><%= item.getChNoParticipacionCorreoElectronico()%></td>
+                                            <td><%= item.getStIDSkype()%></td>
+                                            <td><%= item.getStTwitter()%></td>
+                                            <td><%= item.getStCorreoElectronicoSecundario()%></td>
+                                        </tr>                                        
+                                        </tbody>
+                                        <%    
+                                            }
+                                        %>
+                                        
+                                    </table>
+                                </div>
                             
                             </div>
                         </div>
+                                        <%} %>
                         
                     </form>
                 </div>

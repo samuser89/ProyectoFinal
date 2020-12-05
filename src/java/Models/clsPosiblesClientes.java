@@ -131,7 +131,7 @@ public class clsPosiblesClientes {
         this.obclsCalificacion = obclsCalificacion;
     }
 
-    public char isChNoParticipacionCorreoElectronico() {
+    public char getChNoParticipacionCorreoElectronico() {
         return chNoParticipacionCorreoElectronico;
     }
 
