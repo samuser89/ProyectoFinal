@@ -62,6 +62,8 @@
 
     </div>
   </nav>
+  
+  
   <div class="content-wrapper">
     <div class="container-fluid">
 
@@ -71,7 +73,9 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © CRM 2018</small>
+          <small>Proyecto CRM - Samuel Serna
+              - Diseño Interactivo II -
+              Copyright © CRM 2020</small>
         </div>
       </div>
     </footer>
