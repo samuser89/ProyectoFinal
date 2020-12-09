@@ -418,9 +418,10 @@
                                             <td><%= item.getStTwitter()%></td>
                                             <td><%= item.getStCorreoElectronicoSecundario()%></td>
                                             <td>
-                                                <a class="btn btn-info btn-sm"
+                                                <a class="badge badge-info"
                                                    href="PosiblesClientesController?stOption=M&codigoSeleccionado=<%=item.getInCodigo()%>">Modificar</a>
-                                                <a class="btn btn-danger btn-sm"
+                                                   <br>
+                                                <a class="badge badge-danger"
                                                    href="PosiblesClientesController?stOption=E&codigoSeleccionado=<%=item.getInCodigo()%>">Eliminar</a>
                                         </tr>                                        
                                         </tbody>
