@@ -199,7 +199,8 @@ public class PosiblesClientesController extends HttpServlet {
                             ? 'S' : 'N';
                     lstclsPosiblesClientes.get(inPosicion).setChNoParticipacionCorreoElectronico(chSeleccion);
                     
-                }
+                }else lstclsPosiblesClientes.get(inPosicion).setChNoParticipacionCorreoElectronico('N');
+                
                 if(request.getParameter("txtIDSkype") !=null){
                     lstclsPosiblesClientes.get(inPosicion).setStIDSkype(request.getParameter("txtIDSkype"));
                 }               
